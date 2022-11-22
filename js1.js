@@ -53,7 +53,7 @@ ctx.fillRect(10,10,150,80);
 
 // thực hành xây dựng lớp Date
 
-let MyDate = function (day, month, year) {
+/*let MyDate = function (day, month, year) {
   this.day = day;
   this.month = month;
   this.year = year;
@@ -81,7 +81,20 @@ let day = date.getDay(); // 2
 let month = date.getMonth(); // 2
 let year = date.getYear(); // 2007
 alert(day + "/" + month + "/" + year);
-// date.setDay(10);
-// date.setMonth(10);
-// date.setYear(2019);
-// alert(day + "/" + month + "/" + year);
+*/
+
+// thực hành xây dựng lớp hình tròn
+
+let Circle = function (radius) {
+  this.radius = radius;
+  this.getRadius = function () {
+    return radius;
+  };
+  this.getArea = function () {
+    return Math.PI * radius * radius;
+  };
+};
+let circle = new Circle(2);
+let radius = circle.getRadius(); // 2
+let area = circle.getArea(); // 12.566370614359172
+alert("radius: " + radius + "; area: " + area);
