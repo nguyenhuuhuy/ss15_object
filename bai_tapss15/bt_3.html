@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="turnon()">bật</button>
+    <script>
+      function Mobile(battery, composemess, savemessto, savemesssent, button) {
+        // Trạng thái pin.
+        this.battery = battery;
+        // Vùng nhớ dùng để lưu tin nhắn đang soạn thảo.
+        this.composemess = [];
+        // vùng nhớ dùng để lưu tin nhắn trong hộp thư đến.
+        this.savemessto = [];
+        // Vùng nhớ dùng để lưu tin nhắn đã gửi.
+        this.savemesssent = [];
+        // Nút bật tắt ( Các chức năng không thể hoạt động nếu điện thoại chưa bật. )
+        this.button = button;
+        // chức năng kiểm tra trạng thái điện thoại bật hay tắt.
+        this.check = function getcheck() {
+          if (this.button == true) {
+            console.log("điện thoại đang bật");
+          } else {
+            console.log("điện thoại đang tắt");
+          }
+        };
+        // bật tắt
+        this.turnmobile = function() {
+            if (this.button == false) {
+                this.button == true
+                console.log("cần mở điện thoại.");
+            } else {
+                console.log("cần tắt điện thoại.");
+            }
+        }
+        // chức năng xạc pin
+        this.pin = function () {
+            for(let i = battery;i<=100;i++) {
+            }
+            if (this.battery > 100) {
+                console.log('error');
+            } else if (this.battery == 100) {
+                console.log('cần rút sạc!');
+            } else if(this.battery < 50){
+                console.log('cần sạc!');
+            } else {
+                console.log('chưa cần sạc! ');
+            }
+        }
+        // chức năng soạn tin nhắn.
+        this.charge = function getcharge() {
+            let mess = prompt('Nhập tin nhắn: ')
+            this.composemess.push(mess)
+            return mess;
+        }
+        // chức năng nhận tin nhắn từ một chiếc mobile khác.
+        this.receivemessages = function getreceivemessages() {
+
+        }
+      }
+      // tạo mới 
+      let arc = new Mobile(60, [], [], [], true);
+      // g kiểm tra trạng thái điện thoại bật hay tắt.
+      console.log(arc);
+    //   arc.check();
+    //   arc.turnmobile();
+    //   arc.charge();
+      arc.pin();
+    
+    </script>
+  </body>
+</html>

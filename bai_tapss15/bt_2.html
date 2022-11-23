@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Temperature(c) {
+            this.c = c;
+            if(this.c<-273){
+                alert('không được nhỏ hơn: ' +this.c)
+            }
+            this.fahrenheit = function getFahrenheit() {
+                let f = this.c * 9/5 + 32;
+                return f;
+            }
+            this.kenvin = function getKenvin() {
+                let k = this.c + 273.15;
+                return k;
+            }
+        }
+        let arc = new Temperature(parseInt(prompt('nhập giá trị: ')));
+        console.log('độ c: ', arc.c +" "+ 'C');
+        document.write('độ F: ',arc.fahrenheit());
+        document.write('<br>')
+        document.write('độ K: ', arc.kenvin());
+    </script>
+</body>
+</html>
