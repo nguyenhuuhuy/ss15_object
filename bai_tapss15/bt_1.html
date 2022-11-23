@@ -7,6 +7,51 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+    //    let retangle = {
+    //     width: 10,
+    //     height: 20,
+    //     getArea: function area(x,y) {
+    //         let are = x*y;
+    //         return are;
+    //     },
+    //     getpremisster: function premisster(a,b) {
+    //         let P = (a+b)*2;
+    //         return P;
+    //     }
+    //    }
+    //    console.log("hàm: ", retangle);
+    //    retangle.width = 30;
+    //    retangle.height = 5;
+    //    console.log(retangle.getArea(20,30));
+    //    console.log(retangle.getpremisster(10,20))
+
+    // 1. xây dựng lớp 
+        function Rectangle(width, height) {
+            this.width = width,
+            this.height = height,
+            this.getArea = function area() {
+               let z = this.width * this.height;
+                return z;
+            }
+            this.getpremisster = function premisster() {
+                let p = (this.width + this.height)*2;
+                return p;
+            }
+        } 
+        // 2. khởi tạo retangle1 thông qua lớp Rectangle đã xây
+        let retangle1 = new Rectangle(2,10);
+        // 3. in ra diện tích và chu vi
+        console.log(retangle1);
+        console.log("diện tích: ",retangle1.getArea());
+        console.log("chu ví: ",retangle1.getpremisster());
+        // 4. thay đổi chiều dài và rộng của retangle1
+            retangle1.width = 10;
+            retangle1.height = 20;
+            console.log("rộng: ", retangle1.width);
+            console.log("dài: ", retangle1.height);
+        console.log("diện tích và chu vi sau khi thay đổi: ", retangle1.getArea(), retangle1.getpremisster());
+        
+    </script>
 </body>
 </html>
