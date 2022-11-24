@@ -1,60 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <script>
-      let Battery = function () {
-        this.setEnergy = function (energy) {
-          this.energy = energy;
-        };
-        this.getEnergy = function () {
-          return this.energy;
-        };
-        this.decreaseEnergy = function () {
-          if (this.energy > 0) {
-            this.energy--;
-          }
-        };
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+  <script>
+    var Apple = function () {
+      this.setPiece = function (piece) {
+        this.piece = piece;
       };
-      let FlashLamp = function () {
-        this.setBattery = function (battery) {
-          this.battery = battery;
-        };
-        this.getBatteryInfo = function () {
-          return this.battery.getEnergy();
-        };
-        this.light = function () {
-          if (this.status) {
-            alert("Lighting");
-          } else {
-            alert("Not lighting");
-          }
-        };
-        this.turnOn = function () {
-          this.status = true;
-        };
-        this.turnOff = function () {
-          this.status = false;
-        };
+      this.getPiece = function () {
+        return this.piece;
       };
-      let battery = new Battery();
-      battery.setEnergy(10);
-      let flashLamp = new FlashLamp();
-      flashLamp.setBattery(battery);
-      document.write("Battery info:" + flashLamp.getBatteryInfo() + "<br/>");
-      flashLamp.light();
-      document.write("Turn on<br/>");
-      flashLamp.turnOn();
-      flashLamp.light();
-      document.write("Battery info:" + flashLamp.getBatteryInfo() + "<br/>");
-      document.write("Turn off<br/>");
-      flashLamp.turnOff();
-      flashLamp.light();
-    </script>
-  </body>
+      this.decreasePiece = function () {
+        if (this.piece > 0)
+          return this.piece--;
+        else return this.piece = 0;
+      };
+    };
+
+    var Human = function (name, say, sex, weight) {
+      this.name = name;
+      this.say = say;
+      this.sex = sex;
+      this.weight = weight;
+
+      this.getWeight = function () {
+        return this.weight;
+      };
+      this.setApple = function (apple) {
+        this.apple = apple;
+      };
+      this.getAppleInf = function () {
+        return this.apple.getPiece();
+      };
+      this.biteShot = function () {
+        if (this.status) {
+          this.weight++;
+          document.write(this.name + this.say + '<br>');
+        }
+      };
+      this.oneShot = function () {
+        this.status = true;
+        return this.apple.decreasePiece();
+      };
+    };
+
+    var adam = new Human('Adam', ' say "my turn"', 'Male', 50);
+    var eva = new Human('Eva', ' say "give me"', 'Femal', 45);
+    var apple = new Apple();
+    apple.setPiece(10);
+    adam.setApple(apple);
+    eva.setApple(apple);
+
+    for (var i = 0; i < 5; i++) {
+      eva.oneShot();
+      eva.biteShot();
+      document.write('Weight of Eva: ' + eva.getWeight() + '.' + ' The remain of the apple: ' + eva.getAppleInf() + '<br>');
+      adam.oneShot();
+      adam.biteShot();
+      document.write('Weight of Adam: ' + adam.getWeight() + '.' + ' The remain of the apple: ' + adam.getAppleInf() + '<br>');
+    }
+  </script>
+</body>
+
 </html>

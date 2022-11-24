@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adama and eva</title>
+  </head>
+  <body>
+    <script>
+      // quả táo đc tạo
+      var Apple = function () {
+        // mảnh táo
+        this.setPiece = function (piece) {
+          this.piece = piece;
+        };
+        this.getPiece = function () {
+          return this.piece;
+        };
+        this.decreasePiece = function () {
+          if (this.piece > 0) {
+            return this.piece--;
+          } else {
+            this.piece = 0;
+          }
+        };
+      };
+
+      var Human = function (name, say, sex, weight) {
+        this.name = name;
+        this.say = say;
+        this.sex = sex;
+        this.weight = weight;
+
+        this.getWeight = function () {
+          return this.weight;
+        };
+        this.setApple = function (apple) {
+          this.apple = apple;
+        };
+        this.getAppleInf = function () {
+          return this.apple.getPiece();
+        };
+        this.biteShot = function () {
+          if (this.status) {
+            this.weight++;
+            document.write(this.name + this.say + "<br>");
+          }
+        };
+        this.oneShot = function () {
+          this.status = true;
+          return this.apple.decreasePiece();
+        };
+      };
+      var adam = new Human("Adam", " đến lượt cắn:", "Male", 50);
+      var apple = new Apple();
+      apple.setPiece(10);
+      adam.setApple(apple);
+      console.log(adam);
+      for (var i = 0; i < 5; i++) {
+        adam.oneShot();
+        adam.biteShot();
+        document.write(
+          "chỉ số máu: " +
+            adam.getWeight() +
+            "." +
+            " chỉ số máu của táo: " +
+            adam.getAppleInf() +
+            "<br>"
+        );
+      }
+    </script>
+  </body>
+</html>
