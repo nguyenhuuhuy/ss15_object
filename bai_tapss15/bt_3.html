@@ -52,25 +52,40 @@
             }
         }
         // chức năng soạn tin nhắn.
-        this.charge = function getcharge() {
+        this.charge = function () {
             let mess = prompt('Nhập tin nhắn: ')
             this.composemess.push(mess)
-            return mess;
         }
-        // chức năng nhận tin nhắn từ một chiếc mobile khác.
-        this.receivemessages = function getreceivemessages() {
-
+        // chức năng nhận tin nhắn.
+        this.receivemessages = function () {
+            if(this.battery == 0 || this.button == false) {
+                this.battery == false
+                console.log('cần sạc để bật máy');
+            } else {
+                console.log(this.composemess);
+                this.battery--;
+            }
+        }
+        this.pustmess = function() {
+          if (this.battery == 0 || this.button == false) {
+            this.battery == false
+            console.log('cần sạc để bật máy');
+          } else {
+            console.log(this.composemess);
+             this.battery--;
+          }
         }
       }
       // tạo mới 
-      let arc = new Mobile(60, [], [], [], true);
+      let arc = new Mobile(60, [], ['save'], [], true);
       // g kiểm tra trạng thái điện thoại bật hay tắt.
       console.log(arc);
     //   arc.check();
     //   arc.turnmobile();
-    //   arc.charge();
-      arc.pin();
-    
+      arc.charge();
+    //   arc.pin();
+      arc.receivemessages();
+      arc.pustmess();
     </script>
   </body>
 </html>

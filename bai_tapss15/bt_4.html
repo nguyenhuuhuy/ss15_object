@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <img id="myImage" src="image/tank.png" height="100px" width="100px" />
+    <img id="boom" src="image/boom.png" height="100px" width="100px" />
+    <!--<img src="image/explosion.png" height="34" width="34"/>-->
+</body>
+
+</html>
+<script>
+    let image = document.getElementById('myImage');
+    let boom = document.getElementById('boom');
+    function init() {
+        image.style.position = 'relative';
+        image.style.top = '0px'
+        image.style.left = '0px';
+        boom.style.position = 'relative';
+        boom.style.top = '200px';
+        boom.style.left = '200px'
+    }
+    //
+    // window.onload = init; //Không thể onload window.onload vs body.onload cùng lúc
+    init();
+    // document.body.onload = docReady;
+    function moveDow() {
+        // image = document.getElementById('myImage');
+        image.style.top = parseInt(image.style.top) + 10 + 'px';
+    }
+
+    function moveUp() {
+        // image = document.getElementById('myImage');
+        image.style.top = parseInt(image.style.top) - 10 + 'px';
+    }
+
+    function moveRight() {
+        // image = document.getElementById('myImage');
+        image.style.left = parseInt(image.style.left) + 10 + 'px';
+    }
+
+    function moveLeft() {
+        // image = document.getElementById('myImage');
+        image.style.left = parseInt(image.style.left) - 10 + 'px';
+    }
+
+    function moveSelection(evt) {
+        switch (evt.keyCode) {
+            case 37:
+                moveLeft();
+                break;
+            case 39:
+                moveRight();
+                break;
+            case 38:
+                moveUp();
+                break;
+            case 40:
+                moveDow();
+                break;
+        }
+        checkCollision();
+    }
+    function docReady() {
+        console.log('goi docReady')
+        window.addEventListener('keydown', moveSelection);
+        console.log('sau an phim')
+    }
+    function checkCollision() {
+        console.log('left tank --> ', image.style.left)
+        console.log('top tank --> ', image.style.top)
+        console.log('boom left ', boom.style.left)
+        console.log('boom top', parseInt(boom.style.top) - 100 + 'px')
+        let topBoom = parseInt(boom.style.top) - 100 + 'px';
+        if (parseInt(image.style.top) >= parseInt(topBoom) && parseInt(image.style.left) >= parseInt(boom.style.left)) {
+            image.src = 'image/explosion.png';
+            boom.src = 'image/explosion.png';
+            let audio = new Audio('audio/boom.mp3');
+            audio.play();
+        }
+    }
+    document.body.onload = docReady
+</script>
