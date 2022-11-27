@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mèo chuột</title>
+  </head>
+  <body>
+    <script>
+      var Rat = function (name, khoiluong, tocdo, trangthai) {
+        this.name = name;
+        this.khoiluong = khoiluong;
+        this.tocdo = tocdo;
+        this.trangthai = trangthai;
+
+        this.gettocdo = function (td) {
+          this.tocdo = td;
+        };
+        this.gettrangthai = function () {
+          if (this.trangthai == true) {
+            console.log("sống");
+          } else {
+            console.log("chết");
+          }
+        };
+        this.hanhvi = function () {
+          this.trangthai = true;
+          console.log("kêu: chít,chít");
+        };
+      };
+
+      var Cat = function (namemeo, khoiluongmeo, tocdomeo) {
+        this.namemeo = namemeo;
+        this.khoiluongmeo = khoiluongmeo;
+        this.tocdomeo = tocdomeo;
+        this.getchuot = function (chuot) {
+          this.chuot = chuot;
+        };
+        this.tocdochuot = function () {
+          return this.chuot.gettocdo();
+        };
+        this.hanhvi_meo = function () {
+          console.log("đứng lại!");
+        };
+        this.batchuot = function () {
+          if (this.tocdomeo > this.chuot.tocdo) {
+            chuot.trangthai = false;
+          } else {
+            chuot.trangthai = true;
+          }
+        };
+        this.anthit = function () {
+          this.chuot.hanhvi();
+          console.log("cân nặng mèo tăng: ");
+          console.log(this.khoiluongmeo + this.chuot.khoiluong);
+        };
+        this.chayduoc = function () {
+          this.hanhvi_meo();
+          console.log("khối lượng mèo: ");
+          console.log(this.khoiluongmeo);
+        };
+      };
+
+      var chuot = new Rat("chuột", 30, "", true);
+      var meo = new Cat("mèo", 40, 20);
+      chuot.gettocdo(40);
+      meo.getchuot(chuot);
+      meo.batchuot();
+      chuot.gettrangthai();
+      // meo.anthit();
+      meo.chayduoc();
+    </script>
+  </body>
+</html>

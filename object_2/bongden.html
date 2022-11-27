@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var switchButton = function () {
+        this.status = false;
+        this.turnOn = function () {
+          this.status = true;
+          console.log("bật công tắc!");
+        };
+        this.turnOff = function () {
+          this.status = false;
+          console.log("tắt công tắc!");
+        };
+        this.setButton = function (congtac_1) {
+          this.congtac_1 = congtac_1;
+        };
+        this.getButton = function () {
+          return this.congtac_1;
+        };
+        this.solanButton = function () {
+          if (this.congtac_1 > 0) {
+            return this.congtac_1--;
+          } else {
+            this.congtac_1 = 0;
+          }
+        };
+      };
+
+      var Electric = function () {
+        this.Button = function (button) {
+          this.button = button;
+        };
+        this.getButtonenf = function () {
+          this.button.getButton();
+        };
+        this.click = function () {
+          this.status = true;
+          return this.button.solanButton();
+        };
+      };
+      var congtac = new switchButton();
+      var bongden = new Electric();
+      congtac.setButton(10);
+      bongden.Button(congtac);
+    </script>
+  </body>
+</html>

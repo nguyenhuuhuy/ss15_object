@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Điều khiển tivi</title>
+  </head>
+  <body>
+    <script>
+      var Tivi = function (channels, volume, status) {
+        this.status = status;
+        this.channels = channels;
+        this.volume = volume;
+        this.addChannel_1 = function () {
+          this.channels++;
+          if (this.channels > 10) {
+            this.channels = 1;
+            return this.channels;
+          }
+        };
+        this.addChannel_2 = function () {
+          this.channels--;
+          if (this.channels < 1) {
+            this.channels = 10;
+          }
+          return this.channels;
+        };
+        this.getVolume_1 = function () {
+          this.volume++;
+          return this.volume;
+        };
+        this.getVolume_2 = function () {
+          this.volume--;
+          return this.volume;
+        };
+        this.getStatus_1 = function () {
+          if (this.status == true) {
+            console.log("tivi đang bật");
+            console.log("kênh: ", this.channels);
+          } else {
+            console.log("tivi đang tắt!");
+          }
+        };
+      };
+      var Remote = function (name) {
+        this.name = name;
+        this.status = false;
+        this.getchannel = function (tivi) {
+          this.tivi = tivi;
+        };
+        this.getkenh = function () {};
+      };
+      var tivi = new Tivi(1, 2, true);
+      var dieukhien = new Remote("dk");
+      dieukhien.getchannel(tivi);
+      //   console.log(tivi.addChannel());
+      //   console.log(tivi.getVolume_2());
+      //   tivi.getStatus_1();
+    </script>
+  </body>
+</html>

@@ -1,63 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>bóng đèn</title>
-</head>
-<body>
-        <script>
-            //tạo công tắc 
-            var switchButton = function () {
-                this.status = false;
-                // kiểm tra đèn sáng hay chưa
-                this.kiemtra = function () {
-                    if(this.status == true) {
-                        alert('đèn đang sáng!!')
-                    } else {
-                        alert('đèn không sáng!!')
-                    }
-                }
-                // nút bật
-                this.bat = function () {
-                    this.status = true;
-                    alert('bật công tắc.')
-                };
-                //nút tắt
-                this.tat = function () {
-                    this.status = false;
-                    alert('Tắt công tắc.')
-                }
-            }
+  </head>
+  <body>
+    <script>
+      //tạo công tắc
+      var switchButton = function () {
+        this.status = false;
+        // kiểm tra đèn sáng hay chưa
+        this.kiemtra = function () {
+          if (this.status == true) {
+            alert("đèn đang sáng!!");
+          } else {
+            alert("đèn không sáng!!");
+          }
+        };
+        // nút bật
+        this.bat = function () {
+          this.status = true;
+          alert("bật công tắc.");
+        };
+        //nút tắt
+        this.tat = function () {
+          this.status = false;
+          alert("Tắt công tắc.");
+        };
+      };
 
-            // tạo bóng đèn 
-            var Electric = function () {
-                this.status = false;
-                this.batden = function () {
-                    this.status = true;
-                    alert('đèn đã được bật');
-                };
-                this.tatden = function () {
-                    this.status = false;
-                    alert('đèn đã được tắt')
-                }
-            }
-            var congtac = new switchButton();
-            var bongden = new Electric();
-            bongden(congtac);
-            function on() {
-                bongden.batden(congtac.bat())
-            }
-            function kiemtratrangthai() {
-                congtac.kiemtra();
-            }
-            function off() {
-                bongden.tatden(congtac.tat());
-            }
-        </script>
-        <button onclick="on()">bật đèn</button>
-        <button onclick="off()">tắt đèn</button>
-        <button onclick="kiemtratrangthai()">Kiểm tra</button>
-</body>
+      // tạo bóng đèn
+      var Electric = function () {
+        this.status = false;
+        // bat den
+        this.batden = function () {
+          this.status = true;
+          alert("đèn đã được bật");
+        };
+        // tat den
+        this.tatden = function () {
+          this.status = false;
+          alert("đèn đã được tắt");
+        };
+      };
+      // khởi tạo công tắc và bóng đèn
+      var congtac = new switchButton();
+      var bongden = new Electric();
+      // lồng công tắc vào bóng đèn
+      bongden(congtac);
+      // tạo sự kiện click để bật tắt bóng đèn
+      function on() {
+        bongden.batden(congtac.bat());
+      }
+      function kiemtratrangthai() {
+        congtac.kiemtra();
+      }
+      function off() {
+        bongden.tatden(congtac.tat());
+      }
+    </script>
+    <button onclick="on()">bật đèn</button>
+    <button onclick="off()">tắt đèn</button>
+    <button onclick="kiemtratrangthai()">Kiểm tra</button>
+  </body>
 </html>
